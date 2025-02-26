@@ -1,7 +1,18 @@
 .Myheader {
+	position: fixed;
+	top: 0;
+  left: 0;
+  width: 98%;
+  background: rgba(0, 0, 0, 0.8); 
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 20px;
-	background-color: #4c35f9;
+	z-index: 1000;
+	background-image: url("/public/Icones/Photo_1.webp");
+	background-size: cover; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	height: 100px;
+	color: white;
 }

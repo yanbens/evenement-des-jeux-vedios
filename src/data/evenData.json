@@ -1,0 +1,43 @@
+[
+	{
+		"id": 1,
+		"date": "17 until 21 march, 2025 | 10:00 am",
+		"title": "Game developpers conferance 2025",
+		"location": "San francisco, USA",
+		"description": "Une conférence annuelleregroupant les professionels du devellopement des jeux vidéo .",
+		"imageUrl": "/events/events_1.jpg"
+	},
+	{
+		"id": 2,
+		"date": "tuesday, 30 april | 3:00 pm",
+		"title": "Gamescop amerique Latin 2025",
+		"location": "San paulo, Bresil",
+		"description": "met en avant les nouveautes du secteur pour le public americ-latino.",
+		"imageUrl": "/events/events_2.jpg"
+	},
+	{
+		"id": 3,
+		"date": "Wednesday, 8 May | 9:00 am",
+		"title": "PAX East 2025",
+		"location": "Boston, USA",
+		"description": "Un festeval celebrant la culture des jeux vidéo en reunissant les fans et les devellopeurs.",
+		"imageUrl": "/events/events_3.jpg"
+	},
+	
+	{
+		"id": 4,
+		"date": "Friday, 30 October | 2:00 pm",
+		"title": "Gamescom asie 2025",
+		"location": "Singapour",
+		"description": "Un une edition de gamescom asiatique , met en avant les nouveautes du secteur pour le publlic asiatiques .",
+		"imageUrl": "/events/events_5.jpg"
+	},
+	{
+		"id": 5,
+		"date": "Tuesday, 30 December | 6:00 pm",
+		"title": "The game Awards 2025",
+		
+		"description": "Une ceremonie mondiale pour recompanser les meilleurs jeux vidéo de l'annee et presenter des avant-premieres mondiales.",
+		"imageUrl":  "/events/events_4.jpg"
+	}
+]
