@@ -1,6 +1,8 @@
 import Card from "@/components/card/Card";
 import styles from "./events.module.css";
-const events = () => {
+import eventData from "@/data/eventData.json";
+
+const pageEvents = () => {
 return (
 <div className={styles.container}>
 <h1 className={styles.title}>Calendrier des événements</h1>
@@ -11,9 +13,19 @@ d'événements en ligne. Parcourez pour trouver des festivals, des musées
 expositions, événements  professionnels et bien plus encore !
 </div>
 <div className={styles.cardContainer}>
-<Card /><Card /><Card /><Card /> <Card /><Card /><Card /><Card />
-</div>
-</div>
-);
+				{eventData.map((event) => (
+					<Card
+						key={event.id} // Clé unique pour React
+						id={event.id}
+						date={event.date}
+						title={event.title}
+						location={event.location}
+						imageUrl={event.imageUrl}
+					/>
+				))}
+			</div>
+		</div>
+	);
 };
-export default events;
+
+export default pageEvents;
