@@ -1,7 +1,12 @@
+import React from "react";
+import Card from "../components/card/Card";
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold p-20">Welcome to Next.js</h1>
+    <div className="p-20">
+      <Card />
+      <Card />
+      <Card title="Bienvenue!" />
     </div>
   );
+  15;
 }
