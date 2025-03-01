@@ -2,7 +2,7 @@ import eventData from "@/data/eventData.json"; // Importer les événements
 import styles from "./eventDetail.module.css"; // Importer le module de styles
 
 const pageEventDetail = async ({ params }) => {
-	const eventId = params.eventId;
+	const eventId =  params?.eventId;
 
 	// Convertir eventId en nombre et chercher l'événement
 	const event = eventData.find((e) => e.id === parseInt(eventId));

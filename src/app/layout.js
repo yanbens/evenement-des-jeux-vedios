@@ -27,7 +27,9 @@ export default function RootLayout({ children }) {
         </div>
 
         <div className="content">{children}</div>
-        <div className="footer">Footer</div>
+        <div className="footer">
+        © Collège La Cité | Développé par notre equipe 
+        </div>
       </body>
     </html>
   );
