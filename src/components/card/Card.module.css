@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 .card {
   position: relative;
   padding: 20px;
@@ -12,12 +14,12 @@
   box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.5);
   transition: transform 0.3s ease-in-out;
 }
- 
+
 .card:hover {
   transform: scale(1.05) rotate(-2deg);
   box-shadow: 0px 0px 20px rgba(255, 0, 255, 0.8);
 }
- 
+
 .card::before {
   content: "";
   position: absolute;
@@ -35,7 +37,7 @@
   opacity: 0.3;
   animation: glitch 0.5s infinite linear alternate-reverse;
 }
- 
+
 @keyframes glitch {
   0% {
     transform: translate(2px, -2px);
@@ -44,18 +46,7 @@
     transform: translate(-2px, 2px);
   }
 }
- 
-.title {
-  font-size: 1.2rem;
-  color: #ff00ff;
-  text-shadow: 0px 0px 5px rgba(255, 0, 255, 0.8);
-}
- 
-.description {
-  font-size: 0.9rem;
-  color: #0ff;
-}
- 
+
 .button {
   display: inline-block;
   margin-top: 15px;
@@ -68,11 +59,21 @@
   text-transform: uppercase;
   transition: 0.3s ease-in-out;
 }
- 
+
 .button:hover {
   background: #0ff;
   color: black;
 }
+.cardHeader {
+  background: #aba7bb;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Permet à l'image de se positionner correctement */
+  overflow: hidden; /* Empêche l'image de dépasser */
+}
+
 .cardImage {
   position: absolute;
   top: 0;
@@ -81,11 +82,11 @@
   height: 100%;
   object-fit: cover; /* Remplit le header sans déformation */
 }
- 
+
 .cardContent {
   padding: 16px;
 }
- 
+
 .eventDate {
   color: gray;
   font-size: 14px;
@@ -93,14 +94,14 @@
   align-items: center;
   gap: 6px;
 }
- 
+
 .eventTitle {
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
   color: #242325;
 }
- 
+
 .eventLocation {
   color: gray;
   font-size: 14px;
@@ -109,25 +110,25 @@
   gap: 6px;
   margin-top: 4px;
 }
- 
+
 .cardFooter {
   display: flex;
   justify-content: space-around;
   padding: 10px;
   padding-bottom: 15px;
 }
- 
+
 .icon {
   width: 24px;
   height: 24px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
- 
+
 .icon:hover {
   transform: scale(1.1);
 }
- 
+
 .cardActions {
   display: flex;
   justify-content: center;
