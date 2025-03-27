@@ -4,7 +4,7 @@ export default function MerciPage() {
   return (
     <main style={styles.container}>
       <div style={styles.card}>
-        <h1 style={styles.title}>Merci pour votre message</h1>
+        <h1 style={styles.title}>Merci pour votre message !</h1>
         <p style={styles.text}>
           Nous avons bien reçu votre message. Nous vous répondrons dès que possible.
         </p>

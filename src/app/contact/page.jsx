@@ -1,90 +1,104 @@
 'use client';
+
+import React, { useState } from 'react';
 import styles from './contact.module.css';
-import { useActionState, useEffect } from 'react';
-import { handleContactForm } from './actions';
-import { useRouter } from 'next/navigation';
 
 export default function ContactPage() {
-  const router = useRouter();
-  const [state, formAction] = useActionState(handleContactForm, null);
+  const [formData, setFormData] = useState({
+    nom: '',
+    email: '',
+    message: '',
+  });
 
-  useEffect(() => {
-    if (state?.success) {
-      router.push('/merci');
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.nom.trim()) newErrors.nom = 'Le nom est requis.';
+    if (!formData.email.includes('@')) newErrors.email = 'Email invalide.';
+    if (formData.message.length < 5) newErrors.message = 'Le message est trop court.';
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setSuccessMessage('');
+    } else {
+      console.log('Formulaire envoyé :', formData);
+      setErrors({});
+      setSuccessMessage('Votre message a bien été envoyé !');
+      setFormData({ nom: '', email: '', message: '' });
+
+      // Redirection vers la page de remerciement
+      setTimeout(() => {
+        window.location.href = '/merci';
+      }, 1000);
     }
-  }, [state?.success, router]);
+  };
 
   return (
-    <section className={styles.section}>
-      <div className={styles.contactContainer}>
-        {/* Colonne image */}
-        <div className={styles.imageContainer}>
-          <img
-            src="/gaming.jpg"
-            alt="Gaming Contact"
-            className={styles.image}
-          />
-        </div>
-
-        {/* Colonne formulaire */}
-        <div className={styles.formCard}>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <img
+          src="/Photo_1.webp"
+          alt="Gaming"
+          className={styles.image}
+        />
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
           <h1 className={styles.title}>Contactez-nous</h1>
-          <p className={styles.subtitle}>
-            Une question ? Un commentaire ? On est là pour vous répondre !
-          </p>
+          <p className={styles.subtitle}>Une question ? Un commentaire ? On est là pour vous répondre !</p>
 
-          <form action={formAction} className={styles.form} noValidate>
-            <div className={styles.fieldGroup}>
-              <label>Nom complet</label>
-              <input
-                name="nomprenom"
-                placeholder="Ex: Sabrina K."
-                className={styles.input}
-              />
-              {state?.errors?.nomprenom && (
-                <span className={styles.error}>
-                  {state.errors.nomprenom}
-                </span>
-              )}
-            </div>
+          {successMessage && <p className={styles.success}>{successMessage}</p>}
 
-            <div className={styles.fieldGroup}>
-              <label>Email</label>
-              <input
-                name="email"
-                placeholder="Ex: sabrina@email.com"
-                className={styles.input}
-              />
-              {state?.errors?.email && (
-                <span className={styles.error}>{state.errors.email}</span>
-              )}
-            </div>
+          <label className={styles.label} htmlFor="nom">Nom complet</label>
+          <input
+            className={styles.input}
+            type="text"
+            id="nom"
+            name="nom"
+            value={formData.nom}
+            onChange={handleChange}
+            placeholder="Ex: Sabrina K."
+          />
+          {errors.nom && <p className={styles.error}>{errors.nom}</p>}
 
-            <div className={styles.fieldGroup}>
-              <label>Message</label>
-              <textarea
-                name="message"
-                placeholder="Écris ton message ici..."
-                rows={4}
-                className={styles.textarea}
-              />
-              {state?.errors?.message && (
-                <span className={styles.error}>{state.errors.message}</span>
-              )}
-            </div>
+          <label className={styles.label} htmlFor="email">Email</label>
+          <input
+            className={styles.input}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Ex: sabrina@email.com"
+          />
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
 
-            <button type="submit" className={styles.button}>
-              Envoyer
-            </button>
+          <label className={styles.label} htmlFor="message">Message</label>
+          <textarea
+            className={styles.textarea}
+            id="message"
+            name="message"
+            rows="4"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Écris ton message ici..."
+          />
+          {errors.message && <p className={styles.error}>{errors.message}</p>}
 
-            {state?.success && (
-              <p className={styles.success}>
-                Ton message a bien été envoyé !
-              </p>
-            )}
-          </form>
-        </div>
+          <button type="submit" className={styles.button}>
+            Envoyer
+          </button>
+        </form>
       </div>
-    </section>
+    </div>
   );
 }
