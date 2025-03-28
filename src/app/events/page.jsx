@@ -1,123 +1,61 @@
 'use client';
-import styles from './contact.module.css';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import styles from './events.module.css';
+import Link from 'next/link';
 
-const schema = yup.object().shape({
-  nomprenom: yup.string().required('Le nom est requis'),
-  email: yup.string().email('Email invalide').required('Email requis'),
-  message: yup.string().min(5, 'Le message doit contenir au moins 5 caractères'),
-});
+const events = [
+  {
+    id: '1',
+    title: 'GAME DEVELOPERS CONFERENCE 2025',
+    date: '17 AU 21 MARS 2025 | 10:00 AM',
+    location: 'SAN FRANCISCO, USA',
+    image: '/events/events_1.jpg',
+  },
+  {
+    id: '2',
+    title: 'E-SPORT WORLD CUP 2025',
+    date: '15 AVRIL 2025 | 14:00',
+    location: 'PARIS, FRANCE',
+    image: '/events/events_2.jpg',
+  },
+  {
+    id: '3',
+    title: 'EAST GAME FESTIVAL',
+    date: '03 MAI 2025 | 11:00',
+    location: 'TORONTO, CANADA',
+    image: '/events/events_3.jpg',
+  },
+  {
+    id: '4',
+    title: 'INTERNATIONAL COSPLAY PARTY',
+    date: '24 JUIN 2025 | 16:00',
+    location: 'TOKYO, JAPON',
+    image: '/events/events_4.avif',
+  },
+  {
+    id: '5',
+    title: 'THE GAME AWARDS',
+    date: '11 DÉCEMBRE 2025 | 20:00',
+    location: 'LOS ANGELES, USA',
+    image: '/events/events_5.jpg',
+  },
+];
 
-export default function ContactPage() {
-  const router = useRouter();
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const onSubmit = async (data) => {
-    console.log('✔️ Données validées côté client :', data);
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await res.json();
-
-      if (result.success) {
-        setSuccessMessage('Message envoyé avec succès !');
-        reset();
-        setTimeout(() => router.push('/merci'), 2000);
-      } else {
-        setErrorMessage(result.error || 'Erreur lors de l’envoi.');
-      }
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Une erreur s'est produite.");
-    }
-  };
-
+export default function EventsPage() {
   return (
-    <section className={styles.section}>
-      <div className={styles.contactContainer}>
-        <div className={styles.imageContainer}>
-          <img
-            src="/gaming.jpg"
-            alt="Gaming Contact"
-            className={styles.image}
-          />
-        </div>
-
-        <div className={styles.formCard}>
-          <h1 className={styles.title}>Contactez-nous</h1>
-          <p className={styles.subtitle}>
-            Une question ? Un commentaire ? On est là pour vous répondre !
-          </p>
-
-          <form onSubmit={handleSubmit(onSubmit)} className={styles.form} noValidate>
-            <div className={styles.fieldGroup}>
-              <label>Nom complet</label>
-              <input
-                {...register('nomprenom')}
-                name="nomprenom"
-                placeholder="Ex: Sabrina K."
-                className={styles.input}
-              />
-              {errors.nomprenom && (
-                <span className={styles.error}>{errors.nomprenom.message}</span>
-              )}
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label>Email</label>
-              <input
-                {...register('email')}
-                name="email"
-                placeholder="Ex: sabrina@email.com"
-                className={styles.input}
-              />
-              {errors.email && (
-                <span className={styles.error}>{errors.email.message}</span>
-              )}
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <label>Message</label>
-              <textarea
-                {...register('message')}
-                name="message"
-                placeholder="Écris ton message ici..."
-                rows={4}
-                className={styles.textarea}
-              />
-              {errors.message && (
-                <span className={styles.error}>{errors.message.message}</span>
-              )}
-            </div>
-
-            {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-            {successMessage && <p className={styles.success}>{successMessage}</p>}
-
-            <button type="submit" className={styles.button}>
-              Envoyer
-            </button>
-          </form>
-        </div>
+    <section>
+      <h1 className={styles.title}>Nos événements</h1>
+      <div className={styles.grid}>
+        {events.map((event) => (
+          <div key={event.id} className={styles.card}>
+            <img src={event.image} alt={event.title} className={styles.image} />
+            <p className={styles.details}>{event.date}</p>
+            <h3 style={{ color: 'white', marginBottom: '0.5rem' }}>{event.title}</h3>
+            <p className={styles.location}>{event.location}</p>
+            <Link href={`/events/${event.id}`}>
+              <button className={styles.button}>VOIR DÉTAILS</button>
+            </Link>
+          </div>
+        ))}
       </div>
     </section>
   );
