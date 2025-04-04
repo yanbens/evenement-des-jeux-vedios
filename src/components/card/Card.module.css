@@ -6,7 +6,7 @@
   margin: 15px;
   width: 360px;
   border-radius: 12px;
-  background: #111;
+  background: var(--bgCard);
   border: 2px solid #ff00ff;
   color: #0ff;
   font-family: "Press Start 2P", cursive;
@@ -65,7 +65,7 @@
   color: black;
 }
 .cardHeader {
-  background: #aba7bb;
+  background: var(--bgCardHeader);
   height: 130px;
   display: flex;
   align-items: center;
@@ -88,7 +88,7 @@
 }
 
 .eventDate {
-  color: gray;
+  color: var(--textCard);
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -99,11 +99,11 @@
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
-  color: #242325;
+  color: var(--textCard);
 }
 
 .eventLocation {
-  color: gray;
+  color:var(--textCard);
   font-size: 14px;
   display: flex;
   align-items: center;

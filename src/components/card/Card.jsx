@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Card.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl"; 
 import {
 	CalendarIcon,
 	MapPinIcon,
@@ -18,6 +19,7 @@ const Card = ({
 		
 	imageUrl,
 }) => {
+	const t = useTranslations("Card");
 	return (
 		<div className={styles.card}>
 			{/* Header avec image qui occupe toute la largeur */}
@@ -52,7 +54,7 @@ const Card = ({
 			{/* Bouton "Voir Détails" */}
 			<div className={styles.cardActions}>
 				<Link href={`/events/${id}`} className={styles.detailsButton}>
-					VOIR DÉTAILS
+					{t("seeDetails")}
 				</Link>
 			</div>
 		</div>

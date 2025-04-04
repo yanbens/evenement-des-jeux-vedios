@@ -1,0 +1,40 @@
+{
+    "HomePage": {
+        "title": "Welcome",
+        "under title": "Discover and participate in unforgettable events.",
+        "message": "The video game events are gatherings where game enthusiasts meet to share their love of games, participate in tournaments, discover the latest news and technologies, and meet developers and industry influencers.\nThese events offer an immersive and interactive experience, allowing participants to immerse themselves in the world of video games and experience unforgettable moments.",
+        "title2": "Our team:"
+    },
+    "ContactPage": {
+        "title": "Contact us",
+        "PlaceholderNomPrenom": "Name and surname",
+        "PlaceholderEmail": "Email",
+        "PlaceholderMessage": "Your message",
+        "button": "Send"
+    },
+    "EventPage": {
+        "title": "Event calendar",
+        "Message": "Discover what is happening around the world up to a year in advance by searching our online event calendar. Browse to find festivals, museums exhibitions, professional events and much more!"
+    },
+    "Menu": {
+        "Home": "Home",
+        "Events": "Events",
+        "Contact": "Contact"
+    },
+    "Card": {
+        "seeDetails": "SEE DETAILS"
+    },
+    "Member": {
+        "seeProfile": "See Profile"
+    },
+    
+    "PageMerci": {
+        "title": "Thank you for contacting us!",
+        "message": "We have received your message and will respond as soon as possible.",
+        "backToHome": "Back to home",
+        "redirectMessage": "(You will be redirected automatically in 10 seconds)"
+    }
+
+  
+    
+}
