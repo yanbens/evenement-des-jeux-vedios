@@ -1,31 +1,37 @@
-import Card from "@/components/card/Card";
-import styles from "./events.module.css";
-import eventData from "@/data/eventData.json";
+import ClientEvents from "./ClientEvents";
+import { headers } from "next/headers";
 
-const pageEvents = () => {
-return (
-<div className={styles.container}>
-<h1 className={styles.title}>Calendrier des événements</h1>
-<div className={styles.description}>
-Découvrez ce qui se passe dans le monde entier  jusqu’à un an à
-l’avance en en effectuant une recherche dans notre calendrier
-d'événements en ligne. Parcourez pour trouver des festivals, des musées
-expositions, événements  professionnels et bien plus encore !
-</div>
-<div className={styles.cardContainer}>
-				{eventData.map((event) => (
-					<Card
-						key={event.id} // Clé unique pour React
-						id={event.id}
-						date={event.date}
-						title={event.title}
-						location={event.location}
-						imageUrl={event.imageUrl}
-					/>
-				))}
-			</div>
-		</div>
-	);
-};
+//const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export default pageEvents;
+// Fonction pour récupérer les données côté serveur
+async function getServerEvents() {
+	try {
+		// Récupère les événements depuis l'API
+		//const res = await fetch(`${API_URL}/api/events`, { cache: "no-store" });
+
+		const headersList = await headers(); // Attendre la récupération des headers
+		const host = headersList.get("host");
+		const protocol = host.includes("localhost") ? "http" : "https";
+		const API_URL = `${protocol}://${host}/api/events`;
+
+		const res = await fetch(API_URL);
+
+		// Si la réponse n'est pas OK, lance une erreur
+		if (!res.ok) {
+			const errorText = await res.text(); // Récupère le message d'erreur de l'API
+			throw new Error(`Erreur ${res.status}: ${errorText}`);
+		}
+		// Renvoie les événements en JSON
+		return res.json();
+	} catch (error) {
+		console.error("Erreur lors de la récupération des événements :", error);
+		throw error; // Relance l'erreur pour que Next.js la capture
+	}
+}
+
+// Composant PageEvents côté serveur par défaut
+export default async function PageEvents() {
+	const initialEvents = await getServerEvents(); // Fetch côté serveur
+
+	return <ClientEvents initialEvents={initialEvents} />;
+}

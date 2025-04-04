@@ -1,4 +1,5 @@
 import styles from "./Member.module.css";
+import { useTranslations } from "next-intl"; 
 
 const getRandomColor = () => {
   const colors = ["#FF5733", "#33A1FF", "#FF33A8", "#33FF57", "#FFA533"];
@@ -10,6 +11,7 @@ const Member = ({ name, role, image }) => {
   const avatarColor = getRandomColor();
 
   const initials = name ? name.charAt(0).toUpperCase() : "?";
+  const t = useTranslations("Member");
 
   return (
     <div className={styles.card}>
@@ -27,7 +29,7 @@ const Member = ({ name, role, image }) => {
       </div>
       <h3 className={styles.name}>{name}</h3>
       <p className={styles.description}>{role}</p>
-      <button className={styles.button}>Voir Profil</button>
+      <button className={styles.button}>{t("seeProfile")}</button>
     </div>
   );
 };

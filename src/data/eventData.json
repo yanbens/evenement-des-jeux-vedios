@@ -36,7 +36,7 @@
 		"id": 5,
 		"date": "Tuesday, 30 December | 6:00 pm",
 		"title": "The game Awards 2025",
-		
+		"location": "Los Angeles, USA",
 		"description": "Une ceremonie mondiale pour recompanser les meilleurs jeux vidéo de l'annee et presenter des avant-premieres mondiales.",
 		"imageUrl":  "/events/events_4.avif"
 	}

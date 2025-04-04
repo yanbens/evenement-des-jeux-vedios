@@ -3,15 +3,20 @@ import React, { useState } from "react";
 import styles from "./Menu.module.css";
 import MenuItem from "./MenuItem";
 import Image from "next/image";
-
-const links = [
-  { label: "Accueil", path: "/" },
-  { label: "Evenements", path: "/events" },
-  { label: "Contact", path: "/contact" },
-];
+import { useTranslations } from "next-intl"; // Importation du hook useTranslations
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
+  
+  // Utilisation du hook useTranslations pour récupérer les traductions
+  const t = useTranslations("Menu"); // Assurez-vous d'avoir ce namespace dans vos fichiers de traduction
+
+  const links = [
+    { label: t("Home"), path: "/" }, // Traduction dynamique du label
+    { label: t("Events"), path: "/events" },
+    { label: t("Contact"), path: "/contact" },
+  ];
+
   return (
     <>
       {/*Section de Menu desktop */}

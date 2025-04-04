@@ -1,0 +1,54 @@
+{
+    "HomePage": {
+        "title": "Bienvenue",
+        "under title": "Découvrez et participez à des événements inoubliables.",
+        "message": "Les événements de jeux vidéo sont des rassemblements où les passionnés de jeux se rencontrent pour partager leur amour des jeux, participer à des tournois, découvrir les dernières nouveautés et technologies, et rencontrer des développeurs et des influenceurs de l'industrie.\nCes événements offrent une expérience immersive et interactive, permettant aux participants de se plonger dans l'univers des jeux vidéo et de vivre des moments inoubliables.",
+        "title2": "Notre équipe:"
+    },
+
+    "ContactPage": {
+        "title": "Contactez-nous",
+        "PlaceholderNomPrenom": "Nom et prénom",
+        "PlaceholderEmail": "Adresse e-mail",
+        "PlaceholderMessage": "Votre message",
+        "button": "Envoyer"
+    },
+
+    "EventPage": {
+        "title": "Calendrier des événements",
+        "Message": "Découvrez ce qui se passe dans le monde entier  jusqu’à un an à l’avance en en effectuant une recherche dans notre calendrier d'événements en ligne. Parcourez pour trouver des festivals, des musées expositions, événements  professionnels et bien plus encore!"   
+     },
+     "Menu": {
+        "Home": "Accueil",
+        "Events": "Événements",
+        "Contact": "Contact"
+    },
+    
+     "Card": {
+        "seeDetails": "VOIR DÉTAILS"
+        },
+
+    "Member": {
+        "seeProfile": "Voir Profil"
+            },
+
+    "PageMerci": {
+        "title": "Merci de nous avoir contactés !",
+        "message": "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+        "backToHome": "Retour à l'accueil",
+        "redirectMessage": "(Vous serez redirigé automatiquement dans 10 secondes)"
+              }
+
+   
+              
+              
+        
+          
+      
+      
+    
+      
+      
+       
+
+}
